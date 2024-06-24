@@ -1,6 +1,7 @@
 package com.stepDefination;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.pageObject.LoginPage;
 
@@ -13,16 +14,21 @@ import junit.framework.Assert;
 public class LoginSteps {
 	
 	public WebDriver driver;
+	LoginPage lp;
 	
-	public LoginPage lp;
 	
-	
+
 	@Given("User Lounch chrome browser")
 	public void user_Lounch_chrome_browser() {
 
 		WebDriverManager.chromedriver().setup();
 		
-		lp = new LoginPage(driver);
+		driver = new ChromeDriver();
+		
+		LoginPage lp = new LoginPage(driver);
+		
+		
+		
 	  
 	}
 
@@ -34,7 +40,7 @@ public class LoginSteps {
 
 	@When("User enters Email as {string} and Password as {string}")
 	public void user_enters_Email_as_and_Password_as(String email, String password) {
-
+		lp = new LoginPage(driver);
 		lp.setUserName(email);
 		lp.setPassword(password);
 	  
@@ -42,7 +48,7 @@ public class LoginSteps {
 
 	@When("Click on Login")
 	public void click_on_Login() {
-
+		
 	  lp.clickLogin();
 	}
 
@@ -61,7 +67,7 @@ public class LoginSteps {
 
 	@When("User click on logout link")
 	public void user_click_on_logout_link() throws InterruptedException {
-	
+		
 	    lp.clickLogOut();
 	    Thread.sleep(1000);
 	}

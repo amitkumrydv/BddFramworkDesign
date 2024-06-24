@@ -8,21 +8,18 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-	public WebDriver ldriver;
 
-	public LoginPage(WebDriver rdriver) {
+	public LoginPage(WebDriver driver) {
 
-		rdriver = ldriver;
-
-		PageFactory.initElements(rdriver, this);
+		PageFactory.initElements(driver, this);
 
 	}
 
-	@FindBy(id = "Email")
-	WebElement textEmail;
+	@FindBy(id="Email")
+	WebElement username;
 
-	@FindBy(id = "password")
-	WebElement textPassword;
+	@FindBy(id="Password")
+	WebElement password ;
 
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement btnLogin;
@@ -30,17 +27,19 @@ public class LoginPage {
 	@FindBy(xpath = "//a[normalize-space()='Logout']")
 	WebElement btnLogOut;
 
-	public void setUserName(String name) {
-		textEmail.clear();
+	public void setUserName(String userId) {
+		System.out.println("username -------- " + username.getText());
+		username.clear();
+		System.out.println("username -------- " + username.getText());
 
-		textEmail.sendKeys(name);
+		username.sendKeys(userId);
 
 	}
 
 	public void setPassword(String pwd) {
-		textPassword.clear();
+		password.clear();
 
-		textPassword.sendKeys(pwd);
+		password.sendKeys(pwd);
 
 	}
 

@@ -1,1 +1,3 @@
-com\pageObject\LoignPage.class
+com\stepDefination\LoginSteps.class
+com\testRunner\TestRunner.class
+com\pageObject\LoginPage.class
